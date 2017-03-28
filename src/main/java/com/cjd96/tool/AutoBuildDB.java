@@ -74,7 +74,7 @@ public class AutoBuildDB {
     }
 
     private boolean dealMapper(Class<? extends IEntity> clazz) {
-        String fileName = clazz.getSimpleName().substring(0, clazz.getSimpleName().lastIndexOf("Entity")) + "Mapper.xml";
+        String fileName = clazz.getSimpleName() + "Mapper.xml";
         String filePath = mapperPath + fileName;
         System.out.println(filePath);
         File file = new File(filePath);
