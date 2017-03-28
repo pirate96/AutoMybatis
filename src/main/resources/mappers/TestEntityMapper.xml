@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjd96.entities.TestEntity">
+    <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_test (name,pwd,age) VALUES (#{name},#{pwd},#{age})
+        <selectKey resultType="long" keyProperty="id">
+            SELECT last_insert_id() AS id FROM tb_test LIMIT 1;
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="map">
+        UPDATE tb_test
+        SET name = #{name}, pwd = #{pwd}, age = #{age}
+        WHERE id = #{id}
+    </update>
+    <select id="select" parameterType="object" resultType="map">
+        SELECT *
+        FROM tb_test
+        WHERE id = #{id}
+    </select>
+    <delete id="delete" parameterType="object">
+        DELETE 
+        FROM tb_test
+        WHERE id = #{id}
+    </delete>
+</mapper>
